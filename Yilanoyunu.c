@@ -9,9 +9,8 @@
   int score=0; //yenilen yemlerin sayısını tutarak ona göre puan verecek
   int sutun=20,satir=10; //yemlerin rastgele konumlanmasını sağlamak için
   char map[20][40]; 
-  int tamammi_devammi(struct yilan snake[]){ //Bu fonksiyon, oyunun bitip bitmediğini kontrol eder. 
-  //Yılanın duvara çarpması veya kendi vücuduna çarpması durumunda oyun bitirilir. Bu fonksiyon, 
-  //oyunun bitip bitmediğini 1 veya 0 değerleriyle geri döndürür.
+  int tamammi_devammi(struct yilan snake[]){ //oyunun bitip bitmediğini kontrol eder
+  //yılanın duvara çarpması veya kendi vücuduna çarpması durumunda oyunu bitirir
       int i,k1=0,k2=0; 
       if(snake[0].x==0||snake[0].x==19||snake[0].y==0||snake[0].y==39){ 
          k1=1; 
@@ -26,7 +25,7 @@
       else return 0; 
   } 
            
-  void yemleme(){ //Bu fonksiyon, rastgele bir koordinat üretir ve oyun alanının içinde bulunan bu koordinatı yem olarak işaretler.
+  void yemleme(){ //rastgele bir koordinat üretir ve oyun alanının içinde bulunan bu koordinatı yem olarak işaretler
        srand(time(NULL)); 
        satir=rand()%18+1; 
        sutun=rand()%38+1; 
@@ -46,7 +45,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
    }
 }
  
-  void duvar(char dizi[20][40]){ //Bu fonksiyon, oyun alanını duvarlarla çevreleyen bir harita oluşturur.
+  void duvar(char dizi[20][40]){ //oyun alanını duvarlarla çevreleyen bir harita oluşturur
        int i,j; 
        for(i=0;i<20;i++){ 
           if(i==0||i==19){ 
@@ -65,7 +64,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        } 
        map[satir][sutun]='x'; 
   } 
-  void ciz(char dizi[20][40]){ //Bu fonksiyon, oyun alanını ekrana çizer ve skoru gösterir.
+  void ciz(char dizi[20][40]){ //oyun alanını ekrana çizer ve skoru gösterir
        system("CLS"); 
        printf("Score: %d\n",score); 
        int i,j; 
@@ -77,7 +76,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        } 
         
   } 
-  void baslangic(struct yilan yil[]){ //Bu fonksiyon, yılanın oyun başlangıçta nerede olacağını belirler.
+  void baslangic(struct yilan yil[]){ //yılanın oyun başlangıçta nerede olacağını belirler
        yil[0].x=1; 
        yil[0].y=4; 
        yil[1].x=1; 
@@ -87,7 +86,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        yil[3].x=1; 
        yil[3].y=1; 
   } 
-  void yilan (char dizi[20][40],struct yilan yil[]){ //Bu fonksiyon, yılanın hareketini yönetir ve oyun alanına yılanı çizer.
+  void yilan (char dizi[20][40],struct yilan yil[]){ //yılanın hareketini yönetir ve oyun alanına yılanı çizer
        yem(map,yil); 
        int i; 
        for(i=0;i<u;i++){ 
@@ -169,7 +168,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
              } 
              i++; 
              if(getch() != EOF) {//burada getch fonksiyonu bir tuşa basılırsa tuşun ascii değerini döndürür ancak basılmamışsa eof değerini 
-             //döndürür. Burada diğer işletim sistemlerinde de çalışabilmesi için getch fonksiyonu kullanıldı
+             //döndürür. Burada diğer işletim sistemlerinde de çalışabilmesi için getch fonksiyonu kullandım
                 break; 
              }
             } 
