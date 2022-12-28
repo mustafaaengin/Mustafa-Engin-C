@@ -3,7 +3,7 @@
   #include<stdlib.h> 
   #include<time.h> 
   struct yilan{ 
-         int x,y; //yılanın hareket etmesinde kullanılacak koordinatlar
+         int x,y; //yılanın hareket etmesinde kullanılacak koordinatları bir arada tutmak için struct kullanıldı
   }; 
   int u=4; //yılanın uzunluğu
   int score=0; //yenilen yemlerin sayısını tutarak ona göre puan verecek
