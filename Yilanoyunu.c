@@ -3,15 +3,15 @@
   #include<stdlib.h> 
   #include<time.h> 
   struct yilan{ 
-         int x,y; //yılanın hareket etmesinde kullanılacak koordinatlar
+         int x,y; //yÄ±lanÄ±n hareket etmesinde kullanÄ±lacak koordinatlar
   }; 
-  int u=4; //yılanın uzunluğu
-  int score=0; //yenilen yemlerin sayısını tutarak ona göre puan verecek
-  int sutun=20,satir=10; //yemlerin rastgele konumlanmasını sağlamak için
+  int u=4; //yÄ±lanÄ±n uzunluÄŸu
+  int score=0; //yenilen yemlerin sayÄ±sÄ±nÄ± tutarak ona gÃ¶re puan verecek
+  int sutun=20,satir=10; //yemlerin rastgele konumlanmasÄ±nÄ± saÄŸlamak iÃ§in
   char map[20][40]; 
-  int tamammi_devammi(struct yilan snake[]){ //Bu fonksiyon, oyunun bitip bitmediğini kontrol eder. 
-  //Yılanın duvara çarpması veya kendi vücuduna çarpması durumunda oyun bitirilir. Bu fonksiyon, 
-  //oyunun bitip bitmediğini 1 veya 0 değerleriyle geri döndürür.
+  int tamammi_devammi(struct yilan snake[]){ //Bu fonksiyon, oyunun bitip bitmediÄŸini kontrol eder. 
+  //YÄ±lanÄ±n duvara Ã§arpmasÄ± veya kendi vÃ¼cuduna Ã§arpmasÄ± durumunda oyun bitirilir. Bu fonksiyon, 
+  //oyunun bitip bitmediÄŸini 1 veya 0 deÄŸerleriyle geri dÃ¶ndÃ¼rÃ¼r.
       int i,k1=0,k2=0; 
       if(snake[0].x==0||snake[0].x==19||snake[0].y==0||snake[0].y==39){ 
          k1=1; 
@@ -26,7 +26,7 @@
       else return 0; 
   } 
            
-  void yemleme(){ //Bu fonksiyon, rastgele bir koordinat üretir ve oyun alanının içinde bulunan bu koordinatı yem olarak işaretler.
+  void yemleme(){ //Bu fonksiyon, rastgele bir koordinat Ã¼retir ve oyun alanÄ±nÄ±n iÃ§inde bulunan bu koordinatÄ± yem olarak iÅŸaretler.
        srand(time(NULL)); 
        satir=rand()%18+1; 
        sutun=rand()%38+1; 
@@ -39,14 +39,14 @@ void yem(char dizi[20][40],struct yilan snake[]){
       score=score+10;
       yemleme();
       printf("\a");
-      //Yılan yem yedikçe büyüme işlemi
+      //YÄ±lan yem yedikÃ§e bÃ¼yÃ¼me iÅŸlemi
       snake[u].x=snake[u-1].x;
       snake[u].y=snake[u-1].y;
       u++;
    }
 }
  
-  void duvar(char dizi[20][40]){ //Bu fonksiyon, oyun alanını duvarlarla çevreleyen bir harita oluşturur.
+  void duvar(char dizi[20][40]){ //Bu fonksiyon, oyun alanÄ±nÄ± duvarlarla Ã§evreleyen bir harita oluÅŸturur.
        int i,j; 
        for(i=0;i<20;i++){ 
           if(i==0||i==19){ 
@@ -65,7 +65,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        } 
        map[satir][sutun]='x'; 
   } 
-  void ciz(char dizi[20][40]){ //Bu fonksiyon, oyun alanını ekrana çizer ve skoru gösterir.
+  void ciz(char dizi[20][40]){ //Bu fonksiyon, oyun alanÄ±nÄ± ekrana Ã§izer ve skoru gÃ¶sterir.
        system("CLS"); 
        printf("Score: %d\n",score); 
        int i,j; 
@@ -77,7 +77,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        } 
         
   } 
-  void baslangic(struct yilan yil[]){ //Bu fonksiyon, yılanın oyun başlangıçta nerede olacağını belirler.
+  void baslangic(struct yilan yil[]){ //Bu fonksiyon, yÄ±lanÄ±n oyun baÅŸlangÄ±Ã§ta nerede olacaÄŸÄ±nÄ± belirler.
        yil[0].x=1; 
        yil[0].y=4; 
        yil[1].x=1; 
@@ -87,7 +87,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
        yil[3].x=1; 
        yil[3].y=1; 
   } 
-  void yilan (char dizi[20][40],struct yilan yil[]){ //Bu fonksiyon, yılanın hareketini yönetir ve oyun alanına yılanı çizer.
+  void yilan (char dizi[20][40],struct yilan yil[]){ //Bu fonksiyon, yÄ±lanÄ±n hareketini yÃ¶netir ve oyun alanÄ±na yÄ±lanÄ± Ã§izer.
        yem(map,yil); 
        int i; 
        for(i=0;i<u;i++){ 
@@ -102,7 +102,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
                } 
                snake[0].y++;  
   } 
-  // buradaki sag sol yukari asagi fonksiyonları yılanın hareket yönüne göre koordinatları değiştirir ve yılanı hareket ettirir
+  // buradaki sag sol yukari asagi fonksiyonlarÄ± yÄ±lanÄ±n hareket yÃ¶nÃ¼ne gÃ¶re koordinatlarÄ± deÄŸiÅŸtirir ve yÄ±lanÄ± hareket ettirir
   void sol(struct yilan snake[],int uzunluk){ 
        int i; 
        for(i=uzunluk-1;i>0;i--){ 
@@ -134,7 +134,7 @@ void yem(char dizi[20][40],struct yilan snake[]){
    
   int main(){ 
        
-      char right='f'; // benim laptopumda w tuşu kırıldığı için bu şekilde yaptım wasd yi bir tık sağa kaydırdım
+      char right='f'; // benim laptopumda w tuÅŸu kÄ±rÄ±ldÄ±ÄŸÄ± iÃ§in bu ÅŸekilde yaptÄ±m wasd yi bir tÄ±k saÄŸa kaydÄ±rdÄ±m
       char left='s'; 
       char up='e'; 
       char down='d'; 
@@ -168,8 +168,8 @@ void yem(char dizi[20][40],struct yilan snake[]){
                ciz(map); 
              } 
              i++; 
-             if(getch() != EOF) {//burada getch fonksiyonu bir tuşa basılırsa tuşun ascii değerini döndürür ancak basılmamışsa eof değerini 
-             //döndürür. Burada diğer işletim sistemlerinde de çalışabilmesi için getch fonksiyonu kullanıldı
+             if(getch() != EOF) {//burada getch fonksiyonu bir tuÅŸa basÄ±lÄ±rsa tuÅŸun ascii deÄŸerini dÃ¶ndÃ¼rÃ¼r ancak basÄ±lmamÄ±ÅŸsa eof deÄŸerini 
+             //dÃ¶ndÃ¼rÃ¼r. Burada diÄŸer iÅŸletim sistemlerinde de Ã§alÄ±ÅŸabilmesi iÃ§in getch fonksiyonu kullanÄ±ldÄ±
                 break; 
              }
             } 
